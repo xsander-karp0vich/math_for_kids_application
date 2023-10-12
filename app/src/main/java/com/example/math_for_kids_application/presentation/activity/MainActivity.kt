@@ -1,7 +1,8 @@
-package com.example.math_for_kids_application
+package com.example.math_for_kids_application.presentation.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.math_for_kids_application.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
