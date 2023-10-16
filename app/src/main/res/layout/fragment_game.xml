@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:padding="10dp"
+    tools:context=".presentation.fragments.GameFragment">
+
+
+    <TextView
+        android:id="@+id/tv_timer"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/degular_bold"
+        android:textColor="@color/main_white"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="00:00" />
+
+    <TextView
+        android:id="@+id/tv_sum"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/oval_background"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:textColor="@color/main_white"
+        android:textSize="95sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_timer"
+        tools:text="1" />
+
+
+    <TextView
+        android:id="@+id/tv_left_number"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/oval_background"
+        android:backgroundTint="@color/main_green"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:textColor="@color/main_black"
+        android:textSize="47sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_right_number"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sum"
+        tools:text="7" />
+
+    <TextView
+        android:id="@+id/tv_right_number"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/oval_background"
+        android:backgroundTint="@color/main_green"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:textColor="@color/main_black"
+        android:textSize="47sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_left_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sum"
+        tools:text="?" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/degular_bold"
+        android:text="@string/correct_answers_s_minimum_s"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_left_number" />
+
+    <TextView
+        android:id="@+id/tv_option_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_option_4"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/tv_option_2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/tv_option_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_option_5"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/tv_option_3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_option_1"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/tv_option_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_option_6"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_option_2"
+        tools:text="3" />
+
+    <TextView
+        android:id="@+id/tv_option_4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/tv_option_5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="4" />
+
+    <TextView
+        android:id="@+id/tv_option_5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/tv_option_6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_option_4"
+        tools:text="5" />
+
+    <TextView
+        android:id="@+id/tv_option_6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_option_5"
+        tools:text="6" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

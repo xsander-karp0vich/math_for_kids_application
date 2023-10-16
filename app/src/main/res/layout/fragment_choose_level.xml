@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:padding="20dp"
+    tools:context=".presentation.fragments.ChooseLevelFragment">
+
+    <TextView
+        android:id="@+id/tv_select_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/degular_bold"
+        android:text="@string/select_level"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_testLevel"
+        android:layout_margin="10dp"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/degular_bold"
+        android:text="@string/test"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_easyLevel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_select_level"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/btn_easyLevel"
+        android:layout_margin="10dp"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_green"
+        android:fontFamily="@font/degular_bold"
+        android:text="@string/easy"
+        android:textColor="@color/main_black"
+        android:textSize="50sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_normalLevel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_testLevel" />
+
+    <TextView
+        android:id="@+id/btn_normalLevel"
+        android:layout_margin="10dp"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/light_yellow"
+        android:fontFamily="@font/degular_bold"
+        android:text="@string/normal"
+        android:textColor="@color/main_black"
+        android:textSize="50sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_hardLevel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_easyLevel" />
+
+    <TextView
+        android:id="@+id/btn_hardLevel"
+        android:layout_margin="10dp"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_red"
+        android:fontFamily="@font/degular_bold"
+        android:text="@string/hard"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_normalLevel" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

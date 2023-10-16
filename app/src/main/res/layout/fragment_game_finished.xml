@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:padding="10dp"
+    tools:context=".presentation.fragments.GameFinishedFragment">
+
+
+    <ImageView
+        android:id="@+id/emoji_result"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:contentDescription="@string/game_finished"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/button_retry"
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/main_purple"
+        android:fontFamily="@font/degular_bold"
+        android:gravity="center"
+        android:text="@string/try_again"
+        android:textColor="@color/main_white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
