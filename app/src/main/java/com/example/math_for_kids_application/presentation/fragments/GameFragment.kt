@@ -6,14 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.example.math_for_kids_application.R
 import com.example.math_for_kids_application.databinding.FragmentGameBinding
 import com.example.math_for_kids_application.databinding.FragmentWelcomeBinding
 import com.example.math_for_kids_application.domain.entities.GameResult
 import com.example.math_for_kids_application.domain.entities.GameSettings
 import com.example.math_for_kids_application.domain.entities.Level
+import com.example.math_for_kids_application.presentation.viewmodel.GameFragmentViewModel
 
 class GameFragment : Fragment() {
+
+    private lateinit var gameFragmentViewModel: GameFragmentViewModel
 
     private lateinit var level: Level
 
@@ -24,6 +28,7 @@ class GameFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         parseArgs()
+        gameFragmentViewModel = ViewModelProvider(this)[GameFragmentViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -41,13 +46,19 @@ class GameFragment : Fragment() {
         }
     }
 
+    private fun observeViewModel (){
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     private fun parseArgs() {
-        level = requireArguments().getSerializable(KEY_LEVEL) as Level
+        requireArguments().getParcelable<Level>(KEY_LEVEL)?.let {
+            level = it
+        }
     }
 
     private fun launchGameFinishFragment(gameResult: GameResult) {
@@ -65,7 +76,7 @@ class GameFragment : Fragment() {
         fun newInstance (level: Level): GameFragment{
             return GameFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(KEY_LEVEL, level)
+                    putParcelable(KEY_LEVEL, level)
                 }
             }
         }

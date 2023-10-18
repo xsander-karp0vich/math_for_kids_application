@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    android:padding="10dp"
+    android:padding="20dp"
     tools:context=".presentation.fragments.GameFinishedFragment">
 
 
@@ -18,6 +18,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/degular_bold"
+        android:text="@string/your_score"
+        android:textColor="@color/main_white"
+        android:paddingTop="10dp"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emoji_result" />
+
+    <TextView
+        android:id="@+id/tv_score_percents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/degular_bold"
+        android:paddingTop="10dp"
+        android:text="@string/your_score_in"
+        android:textColor="@color/main_white"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_score" />
+
+
 
     <TextView
         android:id="@+id/button_retry"
@@ -27,8 +52,8 @@
         android:backgroundTint="@color/main_purple"
         android:fontFamily="@font/degular_bold"
         android:gravity="center"
-        android:text="@string/try_again"
         android:textColor="@color/main_white"
+        tools:text="Go back!"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

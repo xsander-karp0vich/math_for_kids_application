@@ -5,12 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    android:padding="10dp"
+    android:padding="20dp"
     tools:context=".presentation.fragments.GameFragment">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/degular_bold"
+        android:textColor="@color/main_white"
+        android:textSize="150sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="3" />
 
     <TextView
         android:id="@+id/tv_timer"
+        android:visibility="visible"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,8 +36,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="00:00" />
 
+
     <TextView
         android:id="@+id/tv_sum"
+        android:visibility="visible"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_margin="20dp"
@@ -41,6 +57,7 @@
 
     <TextView
         android:id="@+id/tv_left_number"
+        android:visibility="visible"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/oval_background"
@@ -57,6 +74,7 @@
 
     <TextView
         android:id="@+id/tv_right_number"
+        android:visibility="visible"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/oval_background"
@@ -72,19 +90,22 @@
         tools:text="?" />
 
     <TextView
+        android:id="@+id/textView"
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:fontFamily="@font/degular_bold"
         android:text="@string/correct_answers_s_minimum_s"
         android:textColor="@color/white"
         android:textSize="16sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_left_number" />
 
     <TextView
         android:id="@+id/tv_option_1"
+        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -103,6 +124,7 @@
 
     <TextView
         android:id="@+id/tv_option_2"
+        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -121,6 +143,7 @@
 
     <TextView
         android:id="@+id/tv_option_3"
+        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -139,6 +162,7 @@
 
     <TextView
         android:id="@+id/tv_option_4"
+        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -157,6 +181,7 @@
 
     <TextView
         android:id="@+id/tv_option_5"
+        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -175,6 +200,7 @@
 
     <TextView
         android:id="@+id/tv_option_6"
+        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -190,6 +216,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_option_5"
         tools:text="6" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:progressDrawable="@drawable/custom_progress_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

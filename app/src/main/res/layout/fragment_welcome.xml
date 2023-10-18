@@ -12,7 +12,7 @@
         android:id="@+id/penguin_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/penguin_icon"
+        android:src="@drawable/woman_count"
         app:layout_constraintDimensionRatio="6:3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
