@@ -10,7 +10,9 @@
     <color name="main_purple">#9C93FF</color>
     <color name="background_color">#8146FE</color>
     <color name="main_green">#CFFF93</color>
+    <color name="green50">#80CFFF93</color>
     <color name="light_yellow">#FFE793</color>
     <color name="main_red">#EB5757</color>
+    <color name="red50">#80EB5757</color>
 
 </resources>

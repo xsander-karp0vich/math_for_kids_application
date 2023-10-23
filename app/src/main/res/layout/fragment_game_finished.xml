@@ -18,6 +18,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/tv_messageOfGameResults"
+        android:padding="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/degular_bold"
+        android:textColor="@color/main_white"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emoji_result"
+        tools:text="You won!" />
+
     <TextView
         android:id="@+id/tv_score"
         android:layout_width="wrap_content"
@@ -25,20 +39,20 @@
         android:fontFamily="@font/degular_bold"
         android:text="@string/your_score"
         android:textColor="@color/main_white"
-        android:paddingTop="10dp"
-        android:textSize="36sp"
+        android:textSize="26sp"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emoji_result" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_messageOfGameResults" />
 
     <TextView
         android:id="@+id/tv_score_percents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/degular_bold"
-        android:paddingTop="10dp"
         android:text="@string/your_score_in"
         android:textColor="@color/main_white"
-        android:textSize="36sp"
+        android:padding="10dp"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_score" />
 

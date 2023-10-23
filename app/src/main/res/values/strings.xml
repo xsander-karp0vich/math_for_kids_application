@@ -10,9 +10,12 @@
     <string name="easy">Easy</string>
     <string name="normal">Normal</string>
     <string name="hard">Hard</string>
-    <string name="correct_answers_s_minimum_s">Correct answers s% (minimum s%)</string>
+    <string name="correct_answers_s_minimum_s">Correct answers %s (minimum %s)</string>
     <string name="game_finished">Game finished</string>
-    <string name="try_again">Try again</string>
-    <string name="your_score">Your score:</string>
-    <string name="your_score_in">Your score in %:</string>
+    <string name="try_again">Try again!</string>
+    <string name="your_score">Your score: %s</string>
+    <string name="your_score_in">Your score in %%: %d%%</string>
+    <string name="you_won">You won!</string>
+    <string name="you_lose">You lose(</string>
+    <string name="go_back">Go back!</string>
 </resources>

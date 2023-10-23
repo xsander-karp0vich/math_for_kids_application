@@ -28,8 +28,8 @@ class GameFragmentViewModel(application: Application) : AndroidViewModel(applica
     private val generateQuestionUseCase = GenerateQuestionUseCase(repository)
     private val getGameSettingsUseCase = GetGameSettingsUseCase(repository)
 
-    private var gameTimer: CountDownTimer? = null
     private var preGameTimer: CountDownTimer? = null
+    private var gameTimer: CountDownTimer? = null
 
     private val _formattedPreGameTime = MutableLiveData<String>()
     val formattedPreGameTime: LiveData<String>
@@ -75,18 +75,18 @@ class GameFragmentViewModel(application: Application) : AndroidViewModel(applica
         get() = _gameResult
 
 
-    fun startGame() {
+    fun startGame(level: Level) {
         getGameSettings(level)
         startPreGameTimer()
-        startGameTimer() //when the pre-game timer has ended, starting game timer method
         generateQuestion()
+        updateProgress()
     }
 
     private fun generateQuestion() {
         _question.value = generateQuestionUseCase(gameSettings.maxSumValue)
     }
 
-    private fun chooseAnswers(number: Int) {
+    fun chooseAnswers(number: Int) {
         checkAnswers(number)
         updateProgress()
         generateQuestion()
@@ -133,6 +133,7 @@ class GameFragmentViewModel(application: Application) : AndroidViewModel(applica
             }
             override fun onFinish() {
                 _isGameStarted.value = true
+                startGameTimer()
             }
         }
         preGameTimer?.start()
@@ -186,7 +187,7 @@ class GameFragmentViewModel(application: Application) : AndroidViewModel(applica
 
     companion object {
         private const val MILLIS_IN_SECONDS = 1000L
-        private const val PRE_GAME_TIME = 3000L
+        private const val PRE_GAME_TIME = 4000L
 
         private const val SECONDS_IN_MINUTES = 60
     }

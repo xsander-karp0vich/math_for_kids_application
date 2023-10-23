@@ -8,9 +8,19 @@
     android:padding="20dp"
     tools:context=".presentation.fragments.GameFragment">
 
-    <TextView
-        android:id="@+id/textView2"
+    <androidx.constraintlayout.widget.Group
+        tools:visibility="visible"
+        android:id="@+id/viewsGroup"
         android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:constraint_referenced_ids="progressBar,tv_timer,tv_sum,tv_left_number,tv_right_number,
+        tv_option_1,tv_option_2,tv_option_3,tv_option_4,tv_option_5,tv_option_6,tvAnswersProgress"/>
+
+    <TextView
+        android:id="@+id/tv_pregame_timer"
+        android:visibility="visible"
+        tools:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/degular_bold"
@@ -24,7 +34,6 @@
 
     <TextView
         android:id="@+id/tv_timer"
-        android:visibility="visible"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +48,6 @@
 
     <TextView
         android:id="@+id/tv_sum"
-        android:visibility="visible"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_margin="20dp"
@@ -57,7 +65,6 @@
 
     <TextView
         android:id="@+id/tv_left_number"
-        android:visibility="visible"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/oval_background"
@@ -74,7 +81,6 @@
 
     <TextView
         android:id="@+id/tv_right_number"
-        android:visibility="visible"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/oval_background"
@@ -83,14 +89,15 @@
         android:gravity="center"
         android:textColor="@color/main_black"
         android:textSize="47sp"
+        android:text="?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_left_number"
         app:layout_constraintTop_toBottomOf="@+id/tv_sum"
-        tools:text="?" />
+        />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvAnswersProgress"
         android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,14 +105,13 @@
         android:text="@string/correct_answers_s_minimum_s"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_left_number" />
 
     <TextView
         android:id="@+id/tv_option_1"
-        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -124,7 +130,6 @@
 
     <TextView
         android:id="@+id/tv_option_2"
-        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -143,7 +148,6 @@
 
     <TextView
         android:id="@+id/tv_option_3"
-        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -162,7 +166,6 @@
 
     <TextView
         android:id="@+id/tv_option_4"
-        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -181,7 +184,6 @@
 
     <TextView
         android:id="@+id/tv_option_5"
-        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -200,7 +202,6 @@
 
     <TextView
         android:id="@+id/tv_option_6"
-        android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -220,12 +221,13 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
+        tools:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:progressDrawable="@drawable/custom_progress_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAnswersProgress" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
