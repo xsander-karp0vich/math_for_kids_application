@@ -15,13 +15,18 @@ import com.example.math_for_kids_application.domain.entities.GameResult
 import com.example.math_for_kids_application.domain.entities.GameSettings
 import com.example.math_for_kids_application.domain.entities.Level
 import com.example.math_for_kids_application.presentation.viewmodel.GameFragmentViewModel
+import com.example.math_for_kids_application.presentation.viewmodel.GameViewModelFactory
 
 class GameFragment : Fragment() {
 
     private lateinit var level: Level
+
+    private val viewModelFactory by lazy {   GameViewModelFactory(level, requireActivity().application) }
+
     private val viewModel: GameFragmentViewModel by lazy {
         ViewModelProvider(
-            this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+            this,
+            viewModelFactory
         )[GameFragmentViewModel::class.java]
     }
 
@@ -57,7 +62,6 @@ class GameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         setClickListenersToOptions()
-        viewModel.startGame(level)
     }
     private fun observeViewModel (){
         viewModel.question.observe(viewLifecycleOwner){
