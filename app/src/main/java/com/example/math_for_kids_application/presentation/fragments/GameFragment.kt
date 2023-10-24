@@ -1,7 +1,6 @@
 package com.example.math_for_kids_application.presentation.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,19 +8,22 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.math_for_kids_application.R
 import com.example.math_for_kids_application.databinding.FragmentGameBinding
 import com.example.math_for_kids_application.domain.entities.GameResult
-import com.example.math_for_kids_application.domain.entities.GameSettings
 import com.example.math_for_kids_application.domain.entities.Level
 import com.example.math_for_kids_application.presentation.viewmodel.GameFragmentViewModel
 import com.example.math_for_kids_application.presentation.viewmodel.GameViewModelFactory
 
 class GameFragment : Fragment() {
 
-    private lateinit var level: Level
+    private val args by navArgs<GameFragmentArgs>()
 
-    private val viewModelFactory by lazy {   GameViewModelFactory(level, requireActivity().application) }
+    private val viewModelFactory by lazy {
+        GameViewModelFactory(args.level, requireActivity().application)
+    }
 
     private val viewModel: GameFragmentViewModel by lazy {
         ViewModelProvider(
@@ -45,10 +47,6 @@ class GameFragment : Fragment() {
     private val binding: FragmentGameBinding
         get() = _binding ?: throw RuntimeException("FragmentGameBinding = null")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        parseArgs()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,45 +61,46 @@ class GameFragment : Fragment() {
         observeViewModel()
         setClickListenersToOptions()
     }
-    private fun observeViewModel (){
-        viewModel.question.observe(viewLifecycleOwner){
+
+    private fun observeViewModel() {
+        viewModel.question.observe(viewLifecycleOwner) {
             binding.tvSum.text = it.sum.toString()
             binding.tvLeftNumber.text = it.visibleNum.toString()
-            for (i in 0 until tvOptions.size){
+            for (i in 0 until tvOptions.size) {
                 if (i < it.options.size) {
                     tvOptions[i].text = it.options[i].toString()
                 }
             }
         }
 
-        viewModel.percentOfRightAnswers.observe(viewLifecycleOwner){
-            binding.progressBar.setProgress(it,true)
+        viewModel.percentOfRightAnswers.observe(viewLifecycleOwner) {
+            binding.progressBar.setProgress(it, true)
         }
 
-        viewModel.enoughCountOfRightAnswers.observe(viewLifecycleOwner){
+        viewModel.enoughCountOfRightAnswers.observe(viewLifecycleOwner) {
 
         }
 
-        viewModel.enoughPercentOfRightAnswers.observe(viewLifecycleOwner){
-            val backgroundResId = if (it){
+        viewModel.enoughPercentOfRightAnswers.observe(viewLifecycleOwner) {
+            val backgroundResId = if (it) {
                 R.drawable.green_progress_background
             } else {
                 R.drawable.custom_progress_background
             }
-            val background = ContextCompat.getDrawable(requireContext(),backgroundResId)
+            val background = ContextCompat.getDrawable(requireContext(), backgroundResId)
             binding.progressBar.progressDrawable = background
         }
 
-        viewModel.formattedPreGameTime.observe(viewLifecycleOwner){
+        viewModel.formattedPreGameTime.observe(viewLifecycleOwner) {
             binding.tvPregameTimer.visibility = View.VISIBLE
             binding.tvPregameTimer.text = it
         }
-        viewModel.isGameStarted.observe(viewLifecycleOwner){
+        viewModel.isGameStarted.observe(viewLifecycleOwner) {
             binding.viewsGroup.visibility = View.VISIBLE
             binding.tvPregameTimer.visibility = View.GONE
         }
 
-        viewModel.formattedGameTime.observe(viewLifecycleOwner){
+        viewModel.formattedGameTime.observe(viewLifecycleOwner) {
             binding.tvTimer.text = it
         }
 
@@ -109,16 +108,16 @@ class GameFragment : Fragment() {
             binding.progressBar.secondaryProgress = it
         }*/
 
-        viewModel.gameResult.observe(viewLifecycleOwner){
+        viewModel.gameResult.observe(viewLifecycleOwner) {
             launchGameFinishFragment(it)
         }
-        viewModel.progressAnswers.observe(viewLifecycleOwner){
+        viewModel.progressAnswers.observe(viewLifecycleOwner) {
             binding.tvAnswersProgress.text = it
         }
     }
 
     private fun setClickListenersToOptions() {
-        for (tvOption in tvOptions){
+        for (tvOption in tvOptions) {
             tvOption.setOnClickListener {
                 viewModel.chooseAnswers(tvOption.text.toString().toInt())
             }
@@ -130,30 +129,11 @@ class GameFragment : Fragment() {
         _binding = null
     }
 
-    private fun parseArgs() {
-        requireArguments().getParcelable<Level>(KEY_LEVEL)?.let {
-            level = it
-        }
-    }
-
     private fun launchGameFinishFragment(gameResult: GameResult) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, GameFinishedFragment.newInstance(gameResult))
-            .addToBackStack(null)
-            .commit()
-    }
-
-    companion object {
-
-        const val NAME = "GameFragment"
-        private const val KEY_LEVEL = "level"
-
-        fun newInstance (level: Level): GameFragment{
-            return GameFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelable(KEY_LEVEL, level)
-                }
-            }
-        }
+        findNavController().navigate(
+            GameFragmentDirections.actionGameFragment2ToGameFinishedFragment2(
+                gameResult
+            )
+        )
     }
 }

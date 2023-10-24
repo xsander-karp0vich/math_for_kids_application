@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.math_for_kids_application.R
 import com.example.math_for_kids_application.databinding.FragmentGameFinishedBinding
 import com.example.math_for_kids_application.domain.entities.GameResult
@@ -15,7 +17,7 @@ import kotlin.random.Random
 
 class GameFinishedFragment : Fragment() {
 
-    private lateinit var gameResult: GameResult
+    private val args by navArgs<GameFinishedFragmentArgs>()
 
     private var _binding: FragmentGameFinishedBinding? = null
     private val binding: FragmentGameFinishedBinding
@@ -23,7 +25,6 @@ class GameFinishedFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        parseArgs()
     }
 
     override fun onCreateView(
@@ -44,7 +45,7 @@ class GameFinishedFragment : Fragment() {
 
         val randomNumber = Random.nextInt(1,4)
 
-        if (gameResult.winner){
+        if (args.gameResult.winner){
             binding.tvMessageOfGameResults.text = getString(R.string.you_won)
             binding.buttonRetry.text = getString(R.string.go_back)
 
@@ -69,7 +70,7 @@ class GameFinishedFragment : Fragment() {
 
         binding.tvScore.text = String.format(
             getString(R.string.your_score),
-            gameResult.countOfRightAnswers
+            args.gameResult.countOfRightAnswers
         )
         binding.tvScorePercents.text = String.format(
             getString(R.string.your_score_in),
@@ -78,7 +79,7 @@ class GameFinishedFragment : Fragment() {
 
     }
     private fun calculatePercentOfRightAnswers(): Int{
-        return ((gameResult.countOfRightAnswers / gameResult.countOfQuestions.toDouble()) * 100).toInt()
+        return ((args.gameResult.countOfRightAnswers / args.gameResult.countOfQuestions.toDouble()) * 100).toInt()
     }
 
 
@@ -86,11 +87,6 @@ class GameFinishedFragment : Fragment() {
         binding.buttonRetry.setOnClickListener {
             retryGame()
         }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                retryGame()
-            }
-        })
     }
 
 
@@ -100,25 +96,7 @@ class GameFinishedFragment : Fragment() {
     }
 
     private fun retryGame() {
-        requireActivity().supportFragmentManager.popBackStack(GameFragment.NAME,FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        findNavController().popBackStack()
     }
 
-    private fun parseArgs() {
-        requireArguments().getParcelable<GameResult>(KEY_GAME_RESULT)?.let {
-            gameResult = it
-        }
-    }
-
-    companion object {
-
-        private const val KEY_GAME_RESULT = "game_result"
-
-        fun newInstance(gameResult: GameResult): GameFinishedFragment {
-            return GameFinishedFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelable(KEY_GAME_RESULT,gameResult)
-                }
-            }
-        }
-    }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment2">
+
+    <fragment
+        android:id="@+id/welcomeFragment2"
+        android:name="com.example.math_for_kids_application.presentation.fragments.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment2_to_chooseLevelFragment3"
+            app:destination="@id/chooseLevelFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseLevelFragment3"
+        android:name="com.example.math_for_kids_application.presentation.fragments.ChooseLevelFragment"
+        android:label="fragment_choose_level"
+        tools:layout="@layout/fragment_choose_level" >
+        <action
+            android:id="@+id/action_chooseLevelFragment3_to_gameFragment2"
+            app:destination="@id/gameFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment2"
+        android:name="com.example.math_for_kids_application.presentation.fragments.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment2_to_gameFinishedFragment2"
+            app:destination="@id/gameFinishedFragment2"
+            app:popUpTo="@id/gameFragment2"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="level"
+            app:argType="com.example.math_for_kids_application.domain.entities.Level" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFinishedFragment2"
+        android:name="com.example.math_for_kids_application.presentation.fragments.GameFinishedFragment"
+        android:label="fragment_game_finished"
+        tools:layout="@layout/fragment_game_finished" >
+        <argument
+            android:name="gameResult"
+            app:argType="com.example.math_for_kids_application.domain.entities.GameResult" />
+    </fragment>
+
+
+</navigation>
